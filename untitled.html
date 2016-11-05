@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <script type="text/javascript" src="angular.min.js"></script>
+<body>
+
+<script>
+var app = angular.module("TodoList", []);
+app.controller("controller", function($scope) {
+    $scope.products = ["TP", "Assessment"];
+    $scope.addItem = function () {
+        $scope.products.push($scope.addMe);
+    }
+    $scope.removeItem = function (x) {
+        $scope.products.splice(x, 1);
+    }
+});
+</script>
+
+<div ng-app="TodoList" ng-controller="controller">
+  <ul>
+    <li ng-repeat="x in products">{{x}}<span ng-click="removeItem($index)">×</span></li>
+  </ul>
+  <input ng-model="addMe">
+  <button ng-click="addItem()">Add</button>
+</div>
+
+</body>
+</html>
